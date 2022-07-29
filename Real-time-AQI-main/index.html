@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Weather</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital@1&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </script>
+  </head>
+  <body>
+    <div class="upper-nav">
+      <h1 class="upper-nav-text">Real Time Air Quality Index</h1>
+    </div>
+    <table id="middle-menu">
+      <tr>
+        <td><span><a href="#">Kolkata(US Consulate)</a></span></td>
+        <!-- <td><a href="#">Victoria,Kolkata</a></td> -->
+        <td><a href="#">Jadavpur</a></td>
+        <td><a href="#">Bidhannagar</a></td>
+        <td><a href="#">Dumdum</a></td>
+      </tr>
+      <tr>
+        <td><a href="#">Rabindra Sarobar</a></td>
+        <!-- <td><a href="#">Ballygunge</a></td> -->
+        <td><a href="#">Belur Math,Howrah</a></td>
+        <td><a href="#">Fort William,Kolkata</a></td>
+        <td><a href="#">Haldia</a></td>
+      </tr>
+    </table>
+    <div class="AQI-main">
+          <p id="AQI-head" style="color:blue;font-style:bold;"></p>
+          <div id="AQI-logo" ></div>
+          <img src="" alt="" id="AQI-img">
+          <div id="AQI-info"></div>
+    </div>
+       <div class="row" style="margin: 10px auto;width:80%;">
+         <div class="col-lg-3 col-sm-6 weather"><img src="pm25.png" alt=""><br><strong>PM25.</strong><h3 class="weather-data" style="float:right";></h3></div>
+         <div class="col-lg-3 col-sm-6 weather"><img src="pm10.png" alt=""><br><strong>PM10</strong><h3 class="weather-data" style="float:right";></h3></div>
+         <div class="col-lg-3 col-sm-6 weather"><img src="co.png" alt=""><br><strong>CO</strong><h3 class="weather-data" style="float:right";></h3></div>
+         <div class="col-lg-3 col-sm-6 weather"><img src="o3.png" alt=""><br><strong>O3</strong><h3 class="weather-data" style="float:right";></h3></div>
+         <div class="col-lg-3 col-sm-6 weather"><img src="temp.png" alt=""><br><strong>Temp</strong><h3 class="weather-data" style="float:right";></h3></div>
+         <div class="col-lg-3 col-sm-6 weather"><img src="pressure.png" alt=""><br><strong>Pressure</strong><h3 class="weather-data" style="float:right";></h3></div>
+         <div class="col-lg-3 col-sm-6 weather"><img src="humidity.png" alt=""><br><strong>Humidity</strong><h3 class="weather-data" style="float:right";></h3></div>
+         <div class="col-lg-3 col-sm-6 weather"><img src="wind.png" alt=""><br><strong>Wind</strong><h3 class="weather-data" style="float:right";></h3></div>
+       </div>
+     <div class="chart-heading">
+       <h2>Visualization of Past 48 Hours of Air-Pollution Data</h2>
+     </div>
+    <table id="middle-body">
+       <tr>
+         <td>
+          <div class="AQI-body">
+             <canvas id="myChart"></canvas>
+             <canvas id="myChart1"></canvas>
+             <canvas id="myChart2"></canvas>
+         </div>
+         </td>
+         <td>
+          <div class="AQI-body">
+               <canvas id="myChart3"></canvas>
+               <canvas id="myChart4"></canvas>
+               <canvas id="myChart5"></canvas>
+         </div>
+         </td>
+         <!-- <td>
+                  <div class="AQI-body"></div>
+         </td> -->
+       </tr>
+    </table>
+    <h4 style="margin-top: 50px;">The table below defines the Air Quality Index scale as defined by the US-EPA 2016 standard:</h4>
+    <div class="table-responsive" style="border:1px solid black;margin:20px auto 0 auto;width: 99%;">
+      <table class="table align-middle">
+        <thead class="scale-table-head">
+          <tr>
+            <th>AQI</th>
+            <th>Remarks</th>
+            <th>Health Implications</th>
+            <th>Cautionary Statement (for PM2.5)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="align-bottom" style="background-color: #23eb37;">
+            <td>0-50</td>
+            <td>Good</td>
+            <td>Air quality is considered satisfactory, and air pollution poses little or no risk</td>
+            <td>None</td>
+          </tr>
+          <tr style="background-color: #fcfc32;">
+            <td>51 -100</td>
+            <td>Satisfactory</td>
+            <td class="align-top">Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.</td>
+            <td>Active children and adults, and people with respiratory disease, such as asthma, should limit prolonged outdoor exertion.</td>
+          </tr>
+          <tr style="background-color: #FF8C00;">
+            <td>101-150</td>
+            <td>Unhealthy for Sensitive Groups</td>
+            <td>Members of sensitive groups may experience health effects. The general public is not likely to be affected.</td>
+            <td>Active children and adults, and people with respiratory disease, such as asthma, should limit prolonged outdoor exertion.</td>
+          </tr>
+          <tr style="background-color: #e32733;color: white;">
+            <td>151-200</td>
+            <td>Unhealthy</td>
+            <td>Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects</td>
+            <td>Active children and adults, and people with respiratory disease, such as asthma, should avoid prolonged outdoor exertion; everyone else, especially children, should limit prolonged outdoor exertion</td>
+          </tr>
+          <tr style="background-color: #750ea1;color: white;">
+            <td>201-300</td>
+            <td>Dangerous</td>
+            <td>Health warnings of emergency conditions. The entire population is more likely to be affected.</td>
+            <td>Active children and adults, and people with respiratory disease, such as asthma, should avoid all outdoor exertion; everyone else, especially children, should limit outdoor exertion.</td>
+          </tr>
+          <tr style="background-color: #82161a;color: white;">
+            <td>300+</td>
+            <td>Hazardous</td>
+            <td>Health alert: everyone may experience more serious health effects</td>
+            <td>Everyone should avoid all outdoor exertion</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  <footer>
+  <!-- Copyright -->
+  <div style="background-color: rgba(10, 70, 166, 0.7);text-align: center; padding: 10px;">
+  <div><span><h4>Icons made by</h4><a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></span></div>
+  <h5>All the AQI-Data and API is provided by:</h5>
+    <ul>
+      <a href="https://aqicn.org/contact/" title="World Air Quality Index Project">World Air Quality Index Project</a>
+      <a href="https://openweathermap.org/api/">OpenWeathermap API</a>
+    </ul>
+  </div>
+  <!-- Copyright -->
+ </footer>
+  <script src="index.js" charset="utf-8"></script>
+  </body>
+</html>

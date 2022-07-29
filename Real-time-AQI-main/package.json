@@ -1,0 +1,18 @@
+{
+  "name": "lastsem",
+  "version": "1.0.0",
+  "description": "This is my last Sem project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Sutirtha Dey",
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^3.2.1",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.7"
+  }
+}
